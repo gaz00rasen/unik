@@ -10,9 +10,8 @@ int main()
 	int b;
 	std::string c;
 
-	std::cin >> a;
-	std::cin >> b;
-	std::cin >> c;
+	std::cin >> a >> b >> c;
+
 	std::cout << "Бегемот Арси весит " << a << " кг., съедает " << b << " арбузов в день и по документам " << c << std::endl;
 }
 //Янин Трофим, 1-4, вариант 3
