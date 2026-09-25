@@ -1,14 +1,13 @@
 ﻿#include <iostream>
-#include <string>
 #include <Windows.h> // Импортируем библиотеки
 
 int main()
 {
 	SetConsoleCP(1251);	// Заставляем консоль правильно считывать русский язык
 	setlocale(LC_ALL, "Russian"); // Заставляем консоль правильно выводить русский язык
-	float a;
-	int b;
-	std::string c; // Задаем переменные
+	float a; // Вес бегемота (кг и гр)
+	unsigned short b; // Кол-во арбузов
+	char c; // Пол бегемота (м/ж)
 
 	std::cin >> a >> b >> c; // Вводим вес бегемота, кол-во арбузов и пол
 
