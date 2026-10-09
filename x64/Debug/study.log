@@ -1,3 +1,3 @@
 ﻿  study.cpp
-S:\VisualStudio\educ\study\study.cpp(24,10): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+S:\VisualStudio\educ\study\study.cpp(32,10): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
   study.vcxproj -> S:\VisualStudio\educ\x64\Debug\study.exe
