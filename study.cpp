@@ -26,7 +26,7 @@ int main()
 			std::cin >> x;
 			if (not(x >= 1 && x < 13.2)) {continue; /* если член последовательности не удовлетворяет условию, пропускаем его */ }
 			sum += x;
-			if (ifmin == false || x < mini); // проверяем минимум
+			if (ifmin == false || x < mini) // проверяем минимум
 			{
 				mini = x;
 				ifmin = true;
