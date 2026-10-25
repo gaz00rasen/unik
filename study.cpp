@@ -1,10 +1,10 @@
 ﻿#include <iostream>
 #include <cmath> //cmath, тк используем sqrt()
 
-double kor(int x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом int()
-double kor(long x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом long()
-double kor(float x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом float()
-double kor(double x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом double()
+double kor(int& x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом int()
+double kor(long& x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом long()
+double kor(float& x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом float()
+double kor(double& x) { return sqrt(x); } // ф-я для извлечения корня переменной с типом double()
 
 void mysum(double& a, double& b, double& c, double& d) // ф-я для вычисления конечной суммы корней переменных
 {
