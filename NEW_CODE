@@ -1,0 +1,98 @@
+#include <iostream>
+
+const int R = 4;
+const int C = 3;
+
+void matrix(int(&mat)[R][C]) // void функция для вывода матрицы
+{
+    for (int i = 0; i < R; i++) // цикл перебора строк
+    {
+        printf("[\t"); // в каждой строке печатаем "[" и отступаем табуляцией
+        for (int j = 0; j < C; j++) { std::cout << mat[i][j] << "\t"; } // цикл перебора столбцов
+        printf("]\n"); // закрываем строку
+    }
+}
+
+int main()
+{
+    std::setlocale(LC_ALL, "Russian"); // подключаем русский язык для консоли
+    int mat[R][C] = { {1, -1, 1}, {-1, 8, -1}, {1, 8, 1}, {-1, 1, -1} }; // задаем значения исходной матрицы 4x3
+
+    char choice;
+    printf("Использовать готовую матрицу? Y/N\n");
+    std::cin >> choice; // запрашиваем у пользователя, какую матрицу использовать: готовую или свою
+    if (choice == 'N' || choice == 'n')
+    {
+        printf("Введите 12 чисел для матрицы:\n");
+        for (int i = 0; i < R; i++)
+        {
+            for (int j = 0; j < C; j++) { std::cin >> mat[i][j]; }
+        }
+    } // сначала перебираем строки, затем столбцы, чтобы заполнить матрицу значениями
+
+    printf("Исходная матрица:\n");
+    matrix(mat); // выводим исходную матрицу на экран, или ту, которую ввел пользователь
+
+    int max_num = mat[0][0], max_cnt = 0;
+    int min_num = mat[0][0], min_cnt = R * C + 1;
+
+    for (int i = 0; i < R; i++) // перебор строк
+    {
+        for (int j = 0; j < C; j++) // перебор столбцов
+        {
+            int sch_ABS = 0, sch_CNT = 0;
+
+            for (int a = 0; a < R; a++)
+            {
+                for (int b = 0; b < C; b++)
+                {
+                    if (abs(mat[a][b]) == abs(mat[i][j])) { sch_ABS++; }
+                    if (mat[a][b] == mat[i][j]) { sch_CNT++; }
+                }
+            }
+            if (sch_ABS > max_cnt) // если модуль текущего числа встретился больше раз, чем предыдущий максимум, то записываем его как новый максимум
+            {
+                max_cnt = sch_ABS;
+                max_num = mat[i][j];
+            }
+
+            if (sch_CNT < min_cnt)
+            {
+                min_cnt = sch_CNT;
+                min_num = mat[i][j];
+            }
+        }
+    }
+
+    if (max_num != min_num)
+    {
+        for (int i = 0; i < R; ++i)
+        {
+            for (int j = 0; j < C; ++j)
+            {
+                if (abs(mat[i][j]) == abs(max_num)) { mat[i][j] = min_num; }
+                else if (mat[i][j] == min_num) { mat[i][j] = max_num; }
+            }
+        }
+    }
+
+    printf("Промежуточный результат (замена |%d| и %d):\n", abs(max_num), min_num);
+    matrix(mat); // выводим промежуточный результат замены
+
+    for (int i = 0; i < R; ++i)
+    {
+        int k = 0;
+        for (int j = 0; j < C; j++)
+        {
+            if (mat[i][j] == mat[i][0]) { k++; }
+        }
+        if (k == C) 
+        { 
+            for (int j = 0; j < C; j++) { mat[i][j] = 0; } 
+        }
+        
+    }
+
+    printf("Итоговая матрица:\n");
+    matrix(mat); // выводим итоговую матрицу
+}
